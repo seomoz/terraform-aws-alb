@@ -69,7 +69,7 @@ variable "tcp_port" {
 
 variable "tcp_enabled" {
   type        = bool
-  default     = true
+  default     = false
   description = "A boolean flag to enable/disable TCP listener"
 }
 
