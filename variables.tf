@@ -61,6 +61,30 @@ variable "internal" {
   description = "A boolean flag to determine whether the ALB should be internal"
 }
 
+variable "tcp_port" {
+  type        = number
+  default     = 80
+  description = "The port for the TCP listener"
+}
+
+variable "tcp_enabled" {
+  type        = bool
+  default     = true
+  description = "A boolean flag to enable/disable TCP listener"
+}
+
+variable "tcp_ingress_cidr_blocks" {
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
+  description = "List of CIDR blocks to allow in TCP security group"
+}
+
+variable "tcp_ingress_prefix_list_ids" {
+  type        = list(string)
+  default     = []
+  description = "List of prefix list IDs for allowing access to TCP ingress security group"
+}
+
 variable "http_port" {
   type        = number
   default     = 80

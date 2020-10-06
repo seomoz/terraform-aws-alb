@@ -196,6 +196,10 @@ Available targets:
 | health\_check\_timeout | The amount of time to wait in seconds before failing a health check request | `number` | `10` | no |
 | health\_check\_unhealthy\_threshold | The number of consecutive health check failures required before considering the target unhealthy | `number` | `2` | no |
 | http2\_enabled | A boolean flag to enable/disable HTTP/2 | `bool` | `true` | no |
+| tcp\_enabled | A boolean flag to enable/disable TCP listener | `bool` | `true` | no |
+| tcp\_ingress\_cidr\_blocks | List of CIDR blocks to allow in TCP security group | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
+| tcp\_ingress\_prefix\_list\_ids | List of prefix list IDs for allowing access to TCP ingress security group | `list(string)` | `[]` | no |
+| tcp\_port | The port for the TCP listener | `number` | `80` | no |
 | http\_enabled | A boolean flag to enable/disable HTTP listener | `bool` | `true` | no |
 | http\_ingress\_cidr\_blocks | List of CIDR blocks to allow in HTTP security group | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | http\_ingress\_prefix\_list\_ids | List of prefix list IDs for allowing access to HTTP ingress security group | `list(string)` | `[]` | no |
@@ -238,6 +242,7 @@ Available targets:
 | alb\_name | The ARN suffix of the ALB |
 | alb\_zone\_id | The ID of the zone which ALB is provisioned |
 | default\_target\_group\_arn | The default target group ARN |
+| tcp\_listener\_arn | The ARN of the TCP forwarding listener |
 | http\_listener\_arn | The ARN of the HTTP forwarding listener |
 | http\_redirect\_listener\_arn | The ARN of the HTTP to HTTPS redirect listener |
 | https\_listener\_arn | The ARN of the HTTPS listener |

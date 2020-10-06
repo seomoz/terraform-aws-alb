@@ -33,6 +33,11 @@ output "default_target_group_arn" {
   value       = aws_lb_target_group.default.arn
 }
 
+output "tcp_listener_arn" {
+  description = "The ARN of the TCP forwarding listener"
+  value       = join("", aws_lb_listener.tcp_forward.*.arn)
+}
+
 output "http_listener_arn" {
   description = "The ARN of the HTTP forwarding listener"
   value       = join("", aws_lb_listener.http_forward.*.arn)
@@ -51,7 +56,7 @@ output "https_listener_arn" {
 output "listener_arns" {
   description = "A list of all the listener ARNs"
   value = compact(
-    concat(aws_lb_listener.http_forward.*.arn, aws_lb_listener.http_redirect.*.arn, aws_lb_listener.https.*.arn)
+    concat(aws_lb_listener.tcp_forward.*.arn, aws_lb_listener.http_forward.*.arn, aws_lb_listener.http_redirect.*.arn, aws_lb_listener.https.*.arn)
   )
 }
 
