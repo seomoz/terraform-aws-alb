@@ -85,7 +85,7 @@ resource "aws_lb" "default" {
   internal           = var.internal
   load_balancer_type = var.tcp_enabled ? "network" : "application"
 
-  security_groups = compact(
+  security_groups = var.tcp_enabled ? null : compact(
     concat(var.security_group_ids, [aws_security_group.default.id]),
   )
 
@@ -99,7 +99,7 @@ resource "aws_lb" "default" {
   access_logs {
     bucket  = module.access_logs.bucket_id
     prefix  = var.access_logs_prefix
-    enabled = var.access_logs_enabled
+    enabled = var.tcp_enabled ? false : var.access_logs_enabled
   }
 }
 
