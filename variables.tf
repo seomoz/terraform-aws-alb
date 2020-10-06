@@ -256,7 +256,7 @@ variable "target_group_port" {
 variable "target_group_protocol" {
   type        = string
   default     = "HTTP"
-  description = "The protocol for the default target group HTTP or HTTPS"
+  description = "The protocol for the default target group TCP or HTTP or HTTPS"
 }
 
 variable "target_group_name" {
